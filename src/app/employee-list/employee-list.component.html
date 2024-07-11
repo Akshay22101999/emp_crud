@@ -1,0 +1,25 @@
+<h1>Employee List</h1>
+<table class="employee-table">
+  <thead>
+    <tr>
+      <th>Employee Name</th>
+      <th>Salary</th>
+      <th>Age</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.name}}</td>
+      <td>{{employee.salary}}</td>
+      <td>{{employee.age}}</td>
+      <td>
+        <button class="edit-button" (click)="editEmployee(employee)">Edit</button>
+        <button class="delete-button" (click)="deleteEmployee(employee.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table> 
+<br><br>
+<button class="add-button" (click)="addNewEmployee()">Add New Employee</button>
+<app-employee-form *ngIf="selectedEmployee" [employee]="selectedEmployee" (employeeUpdated)="onEmployeeUpdated()"></app-employee-form>
